@@ -15,6 +15,7 @@ const connection=mysql.createConnection({
     database:'huangjing'
 });
 
+
 connection.connect(err => {
     if(err){
         return err;
