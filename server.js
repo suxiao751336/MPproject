@@ -6,11 +6,13 @@ const app=express();
 
 //const selectAll = 'select * from lostandfound where unit_id>(select count(*) from lostandfound)-5 order by unit_id asc limit 5 ';
 const selectAll = 'select * from lostandfound';
+
+const selectAll01 = 'select * from loselist order by id';
 const connection=mysql.createConnection({
     host:"localhost",
     user:'root',
-    password:'root',
-    database:'lostandfound'
+    password:'1234',
+    database:'huangjing'
 });
 
 connection.connect(err => {
@@ -37,6 +39,74 @@ connection.query(selectAll,(err, results)=>{
     }
 })
 })
+
+
+
+app.get('/measurement',(req,res)=>{
+    connection.query(selectAll,(err, results)=>{
+        if(err){
+            return res.send(err)
+        }
+        else{
+            
+            console.log(JSON.stringify(results));
+            return res.json({
+                data: results
+    
+            });
+            
+            
+        }
+    })
+    })
+
+
+
+
+    app.get('/measurement/detail',(req,res)=>{
+        const {ID}=req.query;
+       console.log(ID);
+        const detail_quary=" SELECT * FROM loselist WHERE ID='"+ID+"'"
+                                   
+       connection.query(detail_quary,(err,results)=>{
+            if(err){
+                return res.send(err)
+            }else{
+               
+               console.log(results);
+            return res.json({
+                data: results
+               
+            });
+            
+            }
+        });
+        });
+
+
+
+
+        app.get('/measurement/chart',(req,res)=>{
+    
+            const detail_quary="SELECT area ,count(*) as time FROM loselist group by area"
+                                       
+           connection.query(detail_quary,(err,results)=>{
+                if(err){
+                    return res.send(err)
+                }else{
+                   
+                   console.log(results);
+                return res.json({
+                    data: results
+                   
+                });
+                
+                }
+            });
+            });
+
+
+
 
 app.get('/found/add',(req,res)=>{
 const{name,logo,lengths,width,color,mark,time,descr,area}=req.query;
