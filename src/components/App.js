@@ -28,6 +28,7 @@ class App extends Component {
     this.handleClick=this.handleClick.bind(this);
   }
 
+
   componentDidMount() {
     this.getMeasurement();
     this.interval = setInterval(() => {
