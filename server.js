@@ -122,6 +122,7 @@ connection.query(INSERT_PRODUCTS_QUERY,(err,results)=>{
 });
 });
 
+
 app.get('/found/delect',(req,res)=>{
     const{ID}=req.query;
     //console.log(name);
