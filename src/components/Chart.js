@@ -5,8 +5,7 @@ class Chart extends Component{
 	
 	   
 	
-	
-	
+
 	constructor(props){ 
 	    
 	
