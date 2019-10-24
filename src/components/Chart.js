@@ -26,7 +26,7 @@ class Chart extends Component{
 				 {
 					 label:'fffff',
 					 data:[
-						30,
+						this.props.mynum1,
 						8,
 						2
 					 ],
@@ -85,12 +85,12 @@ class Chart extends Component{
 	 }
 	 
 	 
-	 //static defaultProps = {
+	 static defaultProps = {
 		
-		// mynum1:5,
-		// mynum2:30,
-		// mynum3:1
-//	};
+		mynum1:5,
+		 mynum2:30,
+		 mynum3:1
+	};
 
 	 
 	render(){
