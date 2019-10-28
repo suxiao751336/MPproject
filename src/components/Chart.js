@@ -105,7 +105,7 @@ class Chart extends Component{
 		
 		if(this.state.myLogOut){
            
-            return (<Redirect to={'/Detal'}/>)
+            return (<Redirect to={'/Detail'}/>)
          }
 		
 		
