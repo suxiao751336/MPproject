@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Redirect} from "react-router-dom";
 
 class App extends Component{
     constructor(propos) {
@@ -8,11 +9,12 @@ class App extends Component{
 			measureDetail: [],
 			ID:"",
             myId:"",
-			search:""
+            search:"",
+            redirect: false
         } 
 
         this.sortBy = this.sortBy.bind(this);
-        
+        this.submit = this.submit.bind(this);
     }
 
     componentDidMount() {
@@ -94,14 +96,21 @@ handleClick (huangId) {
 			
 }
 
+submit(){
+         
+        this.setState({redirect:true});
 
+      }
 
 
 
 
   
     render() {
-		
+        if(this.state.redirect){
+           
+            return (<Redirect to={'/Chart'}/>)
+         }
 		const {huangId} = this.state;
 		
 		let filterContacts =this.state.measure.filter(
@@ -197,7 +206,7 @@ handleClick (huangId) {
                         </tbody>
                     </table>
 					
-					
+                    <button width="200" onClick = { this.submit}>Chart</button> 
                 </div>
 				
 				</div>

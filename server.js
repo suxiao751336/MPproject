@@ -85,6 +85,28 @@ app.get('/measurement',(req,res)=>{
         });
 
 
+        app.get('/measurement/login',(req,res)=>{
+            const {username,passWord}=req.query;
+            console.log(username);
+            console.log(passWord);
+            const login_quary=" SELECT auth FROM user WHERE username='"+username+"' and password='"+passWord+"'"
+                                       
+           connection.query(login_quary,(err,results)=>{
+                if(err){
+                    return res.send(err)
+                }else{
+                   
+                   console.log(results);
+                   return res.json({
+                    data: results
+                });
+                
+                }
+            });
+            });
+
+
+
 
 
         app.get('/measurement/chart',(req,res)=>{

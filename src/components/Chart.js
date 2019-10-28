@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Bar,Line,Pie} from 'react-chartjs-2';
+import {Redirect} from "react-router-dom";
 
 class Chart extends Component{
 	
@@ -14,7 +15,7 @@ class Chart extends Component{
 		 this.state={
 			 measure: [],
 			 num1:"",
-			
+			 myLogOut: false,
 			 aa:0,
 		     pp:"",
 			 chartData:{
@@ -39,7 +40,8 @@ class Chart extends Component{
 				 ]
 			 }
 		 }
-
+		 this.userChange = this.userChange.bind(this);
+		 this.passwordChange = this.passwordChange.bind(this);
 		 this.getMeasurement = this.getMeasurement.bind(this);
 	}	
 	
@@ -64,6 +66,8 @@ class Chart extends Component{
             .catch(err => console.error(err))
 
 			 var pp=JSON.stringify(this.state.measure);
+			 
+			//alert(pp);
 			//alert(pp[30]);
 			//this.state.aa=pp[30];
 			
@@ -74,13 +78,20 @@ class Chart extends Component{
 		   // alert("this is num1:"+this.props,mynum1);
 
 		
-		    mynum1=pp[30];
+		    //mynum1=pp[30];
 		
 		   
             //alert("mynum1 is:"+mynum1);
 		  
 	 }
 	 
+
+
+	 logOutClick (huangId) { 
+
+		this.setState({myLogOut:true});
+
+	 }
 	 
 	 static defaultProps = {
 		
@@ -92,7 +103,10 @@ class Chart extends Component{
 	 
 	render(){
 		
-	
+		if(this.state.myLogOut){
+           
+            return (<Redirect to={'/Detal'}/>)
+         }
 		
 		
 		return(
@@ -114,7 +128,7 @@ class Chart extends Component{
 			  
     }}
 		  />
-		 
+		 <td><button    onClick = {()=> this.logOutClick()}>clickDetail</button> </td>
 	          
 		  
 		  </div>
