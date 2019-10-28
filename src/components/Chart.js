@@ -40,8 +40,7 @@ class Chart extends Component{
 				 ]
 			 }
 		 }
-		 this.userChange = this.userChange.bind(this);
-		 this.passwordChange = this.passwordChange.bind(this);
+		
 		 this.getMeasurement = this.getMeasurement.bind(this);
 	}	
 	
