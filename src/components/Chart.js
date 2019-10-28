@@ -41,6 +41,7 @@ class Chart extends Component{
 			 }
 		 }
 		
+		
 		 this.getMeasurement = this.getMeasurement.bind(this);
 	}	
 	
